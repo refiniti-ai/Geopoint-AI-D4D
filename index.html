@@ -1,14 +1,748 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Hello World</title>
-  <link href='/style.css' rel='stylesheet'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GeoPoint AI - Drive for Dollars on Autopilot</title>
+    <meta name="description" content="Instantly find distressed properties with AI. No driving required.">
+    
+    <link href="dist/style.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    
 </head>
-<body>
-  <h1>Hello, world!</h1>
-  <button onclick="console.log('hello');">Press me</button>
-  <script defer type="text/javascript" src="/main.js"></script>
+<body class="antialiased selection:bg-purple-500 selection:text-white">
+
+    <!-- Sticky Header -->
+    <header class="fixed w-full top-0 z-50 glass-panel border-b-0 border-white/5 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo -->
+                <div class="flex-shrink-0 flex items-center cursor-pointer">
+                    <img src="images/Geopoint-Logo-(update) 1.svg" alt="GeoPoint Leads Logo" class="h-10 w-auto logo-white-filter logo-lg">
+                </div>
+
+                <!-- Desktop Nav -->
+                <nav class="hidden md:flex space-x-8">
+                    <a href="#how-it-works" class="text-gray-300 hover:text-white hover:text-shadow transition-colors text-sm font-medium">How It Works</a>
+                    <a href="#features" class="text-gray-300 hover:text-white hover:text-shadow transition-colors text-sm font-medium">Features</a>
+                    <a href="#testimonials" class="text-gray-300 hover:text-white hover:text-shadow transition-colors text-sm font-medium">Results</a>
+                    <a href="#pricing" class="text-gray-300 hover:text-white hover:text-shadow transition-colors text-sm font-medium">Pricing</a>
+                    <a href="#api" class="text-gray-300 hover:text-white hover:text-shadow transition-colors text-sm font-medium">API</a>
+                </nav>
+
+                <!-- CTA & Mobile Menu Button -->
+                <div class="flex items-center space-x-4">
+                    <a href="#" class="hidden md:block text-gray-300 hover:text-white text-sm font-medium">Login</a>
+                    <button onclick="openModal()" class="hidden md:block btn-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide">
+                        Book Demo
+                    </button>
+                    <!-- Mobile hamburger -->
+                    <div class="md:hidden flex items-center">
+                        <button onclick="toggleMobileMenu()" class="text-gray-300 hover:text-white">
+                            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mobile Menu -->
+            <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 w-full bg-slate-900 border-b border-white/10 p-4 flex flex-col space-y-4 shadow-xl">
+                <a href="#how-it-works" class="text-gray-300 hover:text-white font-medium" onclick="toggleMobileMenu()">How It Works</a>
+                <a href="#features" class="text-gray-300 hover:text-white font-medium" onclick="toggleMobileMenu()">Features</a>
+                <a href="#testimonials" class="text-gray-300 hover:text-white font-medium" onclick="toggleMobileMenu()">Results</a>
+                <a href="#pricing" class="text-gray-300 hover:text-white font-medium" onclick="toggleMobileMenu()">Pricing</a>
+                <a href="#api" class="text-gray-300 hover:text-white font-medium" onclick="toggleMobileMenu()">API</a>
+                <a href="#" class="text-gray-300 hover:text-white font-medium">Login</a>
+                <button onclick="openModal(); toggleMobileMenu()" class="btn-primary text-white px-5 py-2.5 rounded-full text-sm font-semibold tracking-wide w-full">
+                    Book Demo
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-32 pb-10 lg:pt-48 lg:pb-32 overflow-hidden">
+        
+        <!-- Background Decor -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden z-0 pointer-events-none">
+            <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-600/20 rounded-full blur-[100px]"></div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                
+                <!-- Left Column -->
+                <div class="text-center lg:text-left space-y-8">
+                    <div class="inline-flex items-center px-3 py-1 rounded-full border border-purple-500/30 bg-purple-500/10 text-purple-300 text-xs font-semibold uppercase tracking-wider mb-2">
+                        <span class="w-2 h-2 rounded-full bg-green-400 mr-2 animate-pulse"></span>
+                        AI Real Estate Intelligence
+                    </div>
+                    
+                    <h1 class="text-5xl lg:text-7xl font-extrabold tracking-tight leading-tight">
+                        Stop Driving, <br>
+                        <span class="text-gradient-primary">Start Closing.</span>
+                    </h1>
+                    
+                    <p class="text-xl text-gray-400 max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Combine AI-powered street image analysis with predictive insights to find your next deal without the grind.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                        <button onclick="openModal()" class="btn-primary text-white px-8 py-4 rounded-full text-lg font-semibold flex items-center justify-center gap-2">
+                            Book Demo
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6"></path></svg>
+                        </button>
+                        <button onclick="openVideoModal()" class="btn-ghost text-white px-8 py-4 rounded-full text-lg font-medium flex items-center justify-center gap-2 group">
+                            <span class="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
+                                <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </span>
+                            Watch video
+                        </button>
+                    </div>
+
+                    <div class="pt-4 flex items-center justify-center lg:justify-start gap-4 text-sm text-gray-500">
+                        <div class="flex -space-x-2">
+                            <div class="w-8 h-8 rounded-full bg-white border-2 border-slate-900 overflow-hidden flex items-center justify-center"><img src="https://lh3.googleusercontent.com/EUpli9rF_HQvC62MVZoTjEyTGg-fejMtX7ePY6yWg-LG5t1wePUjWWSUoSRSAks7UVA7OWijN2KtTL_Mx4M6NbPp93UbEkqDUvI=s0" alt="Exp Realty" class="w-6 h-6 object-contain grayscale opacity-70"></div>
+                            <div class="w-8 h-8 rounded-full bg-white border-2 border-slate-900 overflow-hidden flex items-center justify-center"><img src="https://lh3.googleusercontent.com/KYWJjdJkbJloH4a_zMqmm4hNzL-ZBTx6F_JIDtUDYE0J2tkKDxT3r8K6v8rIwmkbHid-juiX0SCWvYWICpe73TGp2NLclKxWp3Q=s0" alt="ReMax" class="w-6 h-6 object-contain grayscale opacity-70"></div>
+                            <div class="w-8 h-8 rounded-full bg-white border-2 border-slate-900 overflow-hidden flex items-center justify-center"><img src="https://lh3.googleusercontent.com/dfRa9qKfPtbf3fsEVztXe8hcXSzSzCF_y5QlgpDhMifwXM0cMfn4YWVYYLeI9SB5_1sc55_xUW9U5rN3Mh2iftyTn92dBzpvK2Q=s0" alt="Realty Executives" class="w-6 h-6 object-contain grayscale opacity-70"></div>
+                        </div>
+                        <p>Trusted by 2,000+ investors</p>
+                    </div>
+                </div>
+
+                <!-- Right Column: Animated Holographic Globe Visual -->
+                <div class="relative w-full h-[500px] flex items-center justify-center">
+                    
+                    <!-- Background Glows -->
+                    <div class="absolute inset-0 bg-blue-500/10 rounded-full blur-3xl animate-pulse-slow"></div>
+                    
+                    <!-- The Holographic Globe -->
+                    <div class="holo-globe w-[350px] h-[350px] md:w-[450px] md:h-[450px] flex items-center justify-center animate-float">
+                        <!-- Rotating Rings (Using manual classes to ensure animation works) -->
+                        <div class="holo-ring w-[90%] h-[90%] border-dashed border-b-transparent animate-spin-slow"></div>
+                        <div class="holo-ring w-[70%] h-[70%] border-dotted border-t-transparent animate-spin-reverse-slow"></div>
+                    
+                        
+                        <!-- Core with Radar Animation -->
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[20%] h-[20%] bg-blue-500 rounded-full blur-xl animate-pulse z-0"></div>
+                        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-[0_0_20px_#fff] z-10"></div>
+                        <div class="radar-scan animate-radar" style="animation-delay: 0s;"></div>
+                        <div class="radar-scan animate-radar" style="animation-delay: 0.5s;"></div>
+                        <div class="radar-scan animate-radar" style="animation-delay: 1s;"></div>
+                        
+                        <!-- Floating House Icons -->
+                        <div class="absolute top-[30%] left-[25%] opacity-80 animate-pulse">
+                             <svg class="w-6 h-6 text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.8)]" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                        </div>
+                        <div class="absolute bottom-[25%] left-[30%] opacity-80 animate-pulse" style="animation-delay: 0.5s">
+                             <svg class="w-5 h-5 text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.8)]" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                        </div>
+                        <div class="absolute top-[40%] right-[25%] opacity-80 animate-pulse" style="animation-delay: 1s">
+                             <svg class="w-5 h-5 text-red-500 drop-shadow-[0_0_8px_rgba(239,68,68,0.8)]" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                        </div>
+
+                         <!-- Green House under "Property Acquired" -->
+                        <div class="absolute top-[22%] right-[18%] opacity-100 z-20">
+                             <svg class="w-6 h-6 text-green-400 drop-shadow-[0_0_10px_rgba(74,222,128,1)]" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                             <!-- Connection Line -->
+                             <div class="absolute bottom-full left-1/2 w-0.5 h-4 bg-green-400/50 -translate-x-1/2"></div>
+                        </div>
+
+                        <!-- Scanning Line -->
+                        <div class="scan-line top-0 w-full animate-scan"></div>
+
+                        <!-- UI Cards -->
+                        <div class="absolute left-[-20px] top-[20%] glass-panel p-3 rounded-lg border-l-4 border-blue-500 animate-float" style="animation-delay: 1s;">
+                             <div class="text-[10px] text-blue-300 uppercase tracking-widest mb-1">Target Found</div>
+                             <div class="flex items-center gap-2">
+                                 <div class="w-8 h-8 bg-slate-800 rounded flex items-center justify-center p-1">
+                                     <svg class="w-full h-full text-blue-400" fill="currentColor" viewBox="0 0 24 24">
+                                         <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/>
+                                     </svg>
+                                 </div>
+                                 <div>
+                                     <div class="text-xs font-bold text-white">123 Oak St</div>
+                                     <div class="text-[10px] text-green-400">Distress: High</div>
+                                 </div>
+                             </div>
+                        </div>
+
+                        <div class="absolute right-[-10px] bottom-[30%] glass-panel p-3 rounded-lg border-l-4 border-purple-500 animate-float" style="animation-delay: 2s;">
+                            <div class="text-[10px] text-purple-300 uppercase tracking-widest mb-1">Lead Score</div>
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 bg-slate-800 rounded flex items-center justify-center">
+                                    <svg class="w-5 h-5 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/>
+                                    </svg>
+                                </div>
+                                <div>
+                                    <div class="text-xl font-bold text-white">94/100</div>
+                                    <div class="text-[10px] text-gray-400">Likely Seller</div>
+                                </div>
+                            </div>
+                       </div>
+                       
+                       <div class="absolute top-[10%] right-[10%] bg-blue-600/80 backdrop-blur px-4 py-1.5 rounded-full border border-blue-400 shadow-[0_0_15px_#3b82f6] animate-pulse z-30">
+                           <div class="flex items-center gap-2">
+                               <svg class="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                               </svg>
+                               <span class="text-xs font-bold text-white">Property Acquired</span>
+                           </div>
+                       </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works (Steps) -->
+    <section id="how-it-works" class="py-20 relative bg-slate-900/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold">Deal Finding on <span class="text-purple-400">Autopilot</span></h2>
+            </div>
+            <div class="relative">
+                <div class="hidden md:block absolute top-1/2 left-0 w-full h-0.5 bg-gradient-to-r from-transparent via-purple-500/30 to-transparent -translate-y-1/2 z-0"></div>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative z-10">
+                    <div class="glass-card p-6 rounded-2xl text-center hover:-translate-y-2 transition-transform">
+                        <div class="w-16 h-16 mx-auto bg-slate-800 rounded-full flex items-center justify-center mb-4 border border-purple-500/30 shadow-[0_0_15px_rgba(168,85,247,0.3)]">
+                            <svg class="w-8 h-8 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">1. Pick Market</h4>
+                        <p class="text-sm text-gray-400">Select any city or neighborhood on the map.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl text-center hover:-translate-y-2 transition-transform">
+                        <div class="w-16 h-16 mx-auto bg-slate-800 rounded-full flex items-center justify-center mb-4 border border-purple-500/30 shadow-[0_0_15px_rgba(168,85,247,0.3)]">
+                            <svg class="w-8 h-8 text-purple-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 100-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">2. Tune Filters</h4>
+                        <p class="text-sm text-gray-400">Set criteria: roof condition, lawn, vacancy, boarded windows.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl text-center hover:-translate-y-2 transition-transform">
+                        <div class="w-16 h-16 mx-auto bg-slate-800 rounded-full flex items-center justify-center mb-4 border border-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.3)]">
+                            <svg class="w-8 h-8 text-blue-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.384-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">3. Run AI Scan</h4>
+                        <p class="text-sm text-gray-400">Our computer vision analyzes 10,000+ images per minute.</p>
+                    </div>
+                    <div class="glass-card p-6 rounded-2xl text-center hover:-translate-y-2 transition-transform">
+                        <div class="w-16 h-16 mx-auto bg-slate-800 rounded-full flex items-center justify-center mb-4 border border-green-500/30 shadow-[0_0_15px_rgba(34,197,94,0.3)]">
+                            <svg class="w-8 h-8 text-green-400" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">4. Get Leads</h4>
+                        <p class="text-sm text-gray-400">Instantly receive a list of verified distressed properties.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- NEW: Before vs After Section -->
+    <section class="py-24 bg-slate-800/20 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">See the <span class="text-green-400">Difference</span></h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">Stop guessing with outdated lists. Our AI sees what's really happening on the ground right now.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 items-center">
+                <!-- Before -->
+                <div class="glass-card rounded-2xl overflow-hidden relative group">
+                    <div class="absolute top-4 left-4 z-10 bg-red-500/90 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">The Old Way</div>
+                    <!-- Fixed Height Class 'h-72' -->
+                    <img src="https://9000-firebase-geopoint-ai-d4d-1764539956670.cluster-g5owgdxmjza26v2l6ljft2znzs.cloudworkstations.dev/images/Geopoint%20AI%20Before.png" alt="Before using GeoPoint AI" class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-900 to-transparent p-6 pt-20">
+                        <p class="text-gray-300 font-medium">Manual driving, spreadsheets, and uncertainty.</p>
+                    </div>
+                </div>
+
+                <!-- After -->
+                <div class="glass-card rounded-2xl overflow-hidden relative group border-green-500/30 shadow-[0_0_30px_rgba(34,197,94,0.1)]">
+                    <div class="absolute top-4 left-4 z-10 bg-green-500/90 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">GeoPoint AI</div>
+                    <!-- Fixed Height Class 'h-72' -->
+                    <img src="https://9000-firebase-geopoint-ai-d4d-1764539956670.cluster-g5owgdxmjza26v2l6ljft2znzs.cloudworkstations.dev/images/Geopoint%20AI%20After.png" alt="After using GeoPoint AI" class="w-full h-72 object-cover group-hover:scale-105 transition-transform duration-700">
+                    <div class="absolute bottom-0 left-0 w-full bg-gradient-to-t from-slate-900 to-transparent p-6 pt-20">
+                        <p class="text-white font-medium">Instant visualization, verified distress data, and actionable leads.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section (Zig-Zag) -->
+    <section id="features" class="py-24 relative overflow-hidden">
+        <div class="absolute top-1/4 left-0 w-[500px] h-[500px] bg-blue-600/10 rounded-full blur-[100px] -z-10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-20">
+                <h2 class="text-4xl font-bold">See What Your Competition <span class="text-blue-400">Can't See</span></h2>
+                <p class="text-gray-400 mt-4 max-w-2xl mx-auto">Our AI vision technology goes beyond simple list pulling. It sees the world like a seasoned investor.</p>
+            </div>
+
+            <div class="space-y-24">
+                
+                <!-- Feature 1 -->
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 md:order-1">
+                        <div class="glass-card rounded-2xl overflow-hidden p-4 border-blue-500/30 shadow-[0_0_30px_rgba(59,130,246,0.1)] h-[300px] relative bg-slate-800/50">
+                             <div class="absolute inset-0 bg-slate-900">
+                                 <div class="absolute inset-0 opacity-20" style="background-image: radial-gradient(#4b5563 1px, transparent 1px); background-size: 20px 20px;"></div>
+                                 <svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none">
+                                     <path d="M-10,150 Q100,50 200,150 T400,150 T600,250" fill="none" stroke="#334155" stroke-width="8" />
+                                     <path d="M-10,150 Q100,50 200,150 T400,150 T600,250" fill="none" stroke="#3b82f6" stroke-width="2" stroke-dasharray="10 5" class="opacity-50" />
+                                 </svg>
+                             </div>
+
+                             <div class="absolute top-[35%] left-[25%] animate-marker-reveal" style="--marker-color: #ef4444; animation-delay: 0.5s;">
+                                 <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                             </div>
+                             
+                             <div class="absolute top-[45%] left-[50%] animate-marker-reveal" style="--marker-color: #22c55e; animation-delay: 1.5s;">
+                                 <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                             </div>
+
+                             <div class="absolute top-[60%] left-[80%] animate-marker-reveal" style="--marker-color: #ef4444; animation-delay: 2.5s;">
+                                 <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+                             </div>
+
+                             <div class="absolute top-0 bottom-0 w-2 bg-gradient-to-b from-transparent via-blue-400 to-transparent shadow-[0_0_20px_#3b82f6] animate-scan-horizontal z-10"></div>
+                             
+                             <div class="absolute top-4 left-4 bg-slate-900/90 backdrop-blur p-2 rounded text-xs text-blue-300 border border-blue-500/30 shadow-lg z-20">Scanning Route: Main St.</div>
+                        </div>
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <h3 class="text-3xl font-bold mb-4 text-white">AI Scans Street-View</h3>
+                        <p class="text-lg text-gray-300 mb-6">Our platform uses cutting-edge AI to "see" and analyze millions of street-view images in your target area.</p>
+                        <button onclick="openModal()" class="mt-8 btn-primary px-6 py-3 rounded-full text-white font-semibold">Start Your Free Demo</button>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="order-1 md:order-1">
+                        <h3 class="text-3xl font-bold mb-4 text-white">AI Identifies Distress</h3>
+                        <p class="text-lg text-gray-300 mb-6">The AI identifies and scores specific visual cues of neglect, such as overgrown weeds, peeling paint, overflowing mailboxes, or utility shutoffs.</p>
+                        <button onclick="openModal()" class="mt-8 btn-primary px-6 py-3 rounded-full text-white font-semibold">See It In Action</button>
+                    </div>
+                    <div class="order-2 md:order-2">
+                         <div class="glass-card rounded-2xl overflow-hidden p-6 border-purple-500/30 shadow-[0_0_30px_rgba(217,70,239,0.1)] h-[300px] flex flex-col justify-between bg-slate-800/50 relative">
+                             <div class="flex justify-between items-center mb-4">
+                                 <h4 class="text-white font-bold">Distress Analysis</h4>
+                                 <span class="bg-purple-500/20 text-purple-300 text-xs px-2 py-1 rounded-full">AI Confidence: 98%</span>
+                             </div>
+                             <div class="space-y-4">
+                                 <div>
+                                     <div class="flex justify-between text-sm text-gray-400 mb-1"><span>Roof Condition</span><span>Severe</span></div>
+                                     <div class="h-2 bg-slate-700 rounded-full overflow-hidden"><div class="progress-bar-fill w-[85%] bg-red-500"></div></div>
+                                 </div>
+                                 <div>
+                                     <div class="flex justify-between text-sm text-gray-400 mb-1"><span>Overgrown Lawn</span><span>Moderate</span></div>
+                                     <div class="h-2 bg-slate-700 rounded-full overflow-hidden"><div class="progress-bar-fill w-[60%] bg-yellow-500" style="animation-delay: 0.5s;"></div></div>
+                                 </div>
+                                 <div>
+                                     <div class="flex justify-between text-sm text-gray-400 mb-1"><span>Boarded Windows</span><span>None</span></div>
+                                     <div class="h-2 bg-slate-700 rounded-full overflow-hidden"><div class="progress-bar-fill w-[5%] bg-green-500" style="animation-delay: 1s;"></div></div>
+                                 </div>
+                             </div>
+                             <div class="mt-4 bg-slate-900/50 p-3 rounded-xl border border-purple-500/20 flex items-center justify-between">
+                                 <span class="text-gray-300">Overall Distress Score</span>
+                                 <span class="text-2xl font-bold text-purple-400">High (8.5/10)</span>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="grid md:grid-cols-2 gap-12 items-center">
+                    <div class="order-2 md:order-1">
+                        <div class="glass-card rounded-2xl overflow-hidden p-2 border-green-500/30 shadow-[0_0_30px_rgba(34,197,94,0.1)] h-[350px] bg-slate-800/50 flex flex-col">
+                             <div class="p-4 border-b border-white/10 flex justify-between items-center">
+                                 <h4 class="text-white font-bold">Top Ranked Leads</h4>
+                                 <button class="text-xs text-green-400 hover:text-green-300">Export List</button>
+                             </div>
+                             <div class="flex-1 overflow-y-auto p-2 space-y-2 custom-scrollbar">
+                                 <div class="bg-slate-900/50 p-3 rounded-xl border border-green-500/20 flex justify-between items-center data-card-glow">
+                                     <div>
+                                         <div class="text-white font-bold">123 Oak St</div>
+                                         <div class="text-xs text-gray-400">Owner: John Doe (Absentee)</div>
+                                     </div>
+                                     <div class="text-right">
+                                         <div class="text-lg font-bold text-green-400">94/100</div>
+                                         <div class="text-xs text-gray-400">Score</div>
+                                     </div>
+                                 </div>
+                                 <div class="bg-slate-900/50 p-3 rounded-xl border border-green-500/20 flex justify-between items-center">
+                                     <div>
+                                         <div class="text-white font-bold">456 Maple Ave</div>
+                                         <div class="text-xs text-gray-400">Owner: LLC (Vacant)</div>
+                                     </div>
+                                     <div class="text-right">
+                                         <div class="text-lg font-bold text-green-400">88/100</div>
+                                         <div class="text-xs text-gray-400">Score</div>
+                                     </div>
+                                 </div>
+                                 <div class="bg-slate-900/50 p-3 rounded-xl border border-green-500/20 flex justify-between items-center">
+                                     <div>
+                                         <div class="text-white font-bold">789 Pine Ln</div>
+                                         <div class="text-xs text-gray-400">Owner: Estate of Smith</div>
+                                     </div>
+                                     <div class="text-right">
+                                         <div class="text-lg font-bold text-green-400">82/100</div>
+                                         <div class="text-xs text-gray-400">Score</div>
+                                     </div>
+                                 </div>
+                             </div>
+                        </div>
+                    </div>
+                    <div class="order-1 md:order-2">
+                        <h3 class="text-3xl font-bold mb-4 text-white">Receive Your Lead Score</h3>
+                        <p class="text-lg text-gray-300 mb-6">The system delivers a data-driven lead score for every property, giving you a clear list of the most promising leads.</p>
+                        <button onclick="openModal()" class="mt-8 btn-primary px-6 py-3 rounded-full text-white font-semibold">Get Ranked Leads</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-24 bg-slate-900 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-center text-3xl md:text-5xl font-bold mb-16">What Others Are Saying!</h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="glass-panel p-8 rounded-2xl border-l-4 border-blue-500 relative">
+                    <div class="absolute -top-4 left-6 bg-slate-900 px-2">
+                        <div class="flex text-yellow-400 space-x-1">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">Homeowners That Sell!</h3>
+                    <p class="text-gray-400 mb-6 italic">"GeoPoint changed direct mail for the better! I no longer have to stress about finding the “right list”… Now I can actually mail directly to homeowners that WANT TO SELL!!”</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-sm">JR</div>
+                        <div class="ml-3">
+                            <p class="text-white font-bold">Josh R.</p>
+                            <p class="text-sm text-gray-500">EXP Realty</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-panel p-8 rounded-2xl border-l-4 border-purple-500 relative">
+                     <div class="absolute -top-4 left-6 bg-slate-900 px-2">
+                        <div class="flex text-yellow-400 space-x-1">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">No Guesswork.</h3>
+                    <p class="text-gray-400 mb-6 italic">“GeoPoint took the guesswork out of direct mail! Now I mail directly to motivated sellers. It’s been a game-changer for our team.”</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-purple-600 flex items-center justify-center text-white font-bold text-sm">SL</div>
+                        <div class="ml-3">
+                            <p class="text-white font-bold">Sarah L.</p>
+                            <p class="text-sm text-gray-500">REMax</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="glass-panel p-8 rounded-2xl border-l-4 border-green-500 relative">
+                     <div class="absolute -top-4 left-6 bg-slate-900 px-2">
+                        <div class="flex text-yellow-400 space-x-1">
+                            <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
+                        </div>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2 uppercase tracking-wide">Leads Goldmine...</h3>
+                    <p class="text-gray-400 mb-6 italic">"GeoPoint’s targeted leads are a goldmine for my business! I finally reach motivated sellers, saving time and getting deals done faster.”</p>
+                    <div class="flex items-center">
+                        <div class="w-10 h-10 rounded-full bg-green-600 flex items-center justify-center text-white font-bold text-sm">PM</div>
+                        <div class="ml-3">
+                            <p class="text-white font-bold">Peter M.</p>
+                            <p class="text-sm text-gray-500">Realty Executives</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Trusted By -->
+    <section class="py-12 bg-slate-950 border-y border-white/5">
+        <div class="max-w-7xl mx-auto px-4 text-center">
+             <p class="text-sm font-semibold text-gray-500 uppercase tracking-widest mb-8">Trusted by Agents at</p>
+             <div class="flex flex-wrap justify-center items-center gap-12 md:gap-20 grayscale opacity-70 hover:grayscale-0 hover:opacity-100 transition-all duration-500">
+                 <img src="https://lh3.googleusercontent.com/EUpli9rF_HQvC62MVZoTjEyTGg-fejMtX7ePY6yWg-LG5t1wePUjWWSUoSRSAks7UVA7OWijN2KtTL_Mx4M6NbPp93UbEkqDUvI=s0" alt="Exp Realty" class="h-12 w-auto object-contain">
+                 <img src="https://lh3.googleusercontent.com/KYWJjdJkbJloH4a_zMqmm4hNzL-ZBTx6F_JIDtUDYE0J2tkKDxT3r8K6v8rIwmkbHid-juiX0SCWvYWICpe73TGp2NLclKxWp3Q=s0" alt="ReMax" class="h-12 w-auto object-contain scale-75">
+                 <img src="https://lh3.googleusercontent.com/dfRa9qKfPtbf3fsEVztXe8hcXSzSzCF_y5QlgpDhMifwXM0cMfn4YWVYYLeI9SB5_1sc55_xUW9U5rN3Mh2iftyTn92dBzpvK2Q=s0" alt="Realty Executives" class="h-12 w-auto object-contain">
+             </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="py-20 bg-slate-900 border-t border-white/5">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold">Simple, Transparent Pricing</h2>
+                <p class="text-gray-400 mt-2">Start for free, scale as you grow.</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+                <div class="glass-panel p-8 rounded-2xl border border-white/5 flex flex-col">
+                    <h3 class="text-xl font-bold text-white mb-2">Starter</h3>
+                    <p class="text-xs text-gray-400 uppercase tracking-wide mb-1">Starting From</p>
+                    <div class="text-3xl font-bold text-white mb-6">$49<span class="text-sm text-gray-500 font-normal">/mo</span></div>
+                    <ul class="space-y-4 mb-8 flex-1 text-sm text-gray-400">
+                        <li class="flex"><svg class="w-5 h-5 text-purple-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> 500 AI Scans / mo</li>
+                        <li class="flex"><svg class="w-5 h-5 text-purple-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Basic Filters</li>
+                        <li class="flex"><svg class="w-5 h-5 text-purple-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> 1 User</li>
+                    </ul>
+                    <button onclick="openModal()" class="w-full py-3 rounded-lg border border-purple-500 text-purple-400 hover:bg-purple-500 hover:text-white transition-colors font-semibold">Start Free Trial</button>
+                </div>
+                <div class="glass-card p-8 rounded-2xl relative flex flex-col transform md:-translate-y-4 border-purple-500/50 shadow-[0_0_30px_rgba(217,70,239,0.15)]">
+                    <div class="absolute top-0 right-0 bg-purple-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">POPULAR</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Pro Team</h3>
+                    <p class="text-xs text-gray-300 uppercase tracking-wide mb-1">Starting From</p>
+                    <div class="text-3xl font-bold text-white mb-6">$149<span class="text-sm text-gray-500 font-normal">/mo</span></div>
+                    <ul class="space-y-4 mb-8 flex-1 text-sm text-gray-300">
+                        <li class="flex"><svg class="w-5 h-5 text-blue-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Unlimited AI Scans</li>
+                        <li class="flex"><svg class="w-5 h-5 text-blue-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Advanced Distress Filters</li>
+                        <li class="flex"><svg class="w-5 h-5 text-blue-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> 3 Team Members</li>
+                        <li class="flex"><svg class="w-5 h-5 text-blue-400 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Skip Tracing Included</li>
+                    </ul>
+                    <button onclick="openModal()" class="w-full py-3 rounded-lg btn-primary text-white font-semibold">Get Started</button>
+                </div>
+                <div class="glass-panel p-8 rounded-2xl border border-white/5 flex flex-col">
+                    <h3 class="text-xl font-bold text-white mb-2">Enterprise</h3>
+                    <p class="text-xs text-gray-400 uppercase tracking-wide mb-1">Starting From</p>
+                    <div class="text-3xl font-bold text-white mb-6">Custom</div>
+                    <ul class="space-y-4 mb-8 flex-1 text-sm text-gray-400">
+                        <li class="flex"><svg class="w-5 h-5 text-purple-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> API Access</li>
+                        <li class="flex"><svg class="w-5 h-5 text-purple-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> CRM Integrations</li>
+                        <li class="flex"><svg class="w-5 h-5 text-purple-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg> Dedicated Support</li>
+                    </ul>
+                    <button onclick="openModal()" class="w-full py-3 rounded-lg border border-gray-600 text-white hover:bg-white hover:text-slate-900 transition-colors font-semibold">Contact Sales</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- API Section -->
+    <section id="api" class="py-24 relative overflow-hidden bg-slate-800/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="order-1 md:order-1">
+                    <div class="inline-flex items-center px-3 py-1 rounded-full border border-blue-500/30 bg-blue-500/10 text-blue-300 text-xs font-semibold uppercase tracking-wider mb-4">
+                        For Developers
+                    </div>
+                    <h2 class="text-3xl md:text-5xl font-bold mb-6">Build on Top of <span class="text-blue-400">GeoPoint</span></h2>
+                    <p class="text-lg text-gray-400 mb-6">Integrate our distress detection directly into your CRM, custom app, or workflow. Access our massive database of analyzed street-view imagery with a simple REST API.</p>
+                    <ul class="space-y-3 text-gray-300 mb-8">
+                        <li class="flex items-center"><svg class="w-5 h-5 text-blue-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Real-time property distress scores</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-blue-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Bulk address analysis</li>
+                        <li class="flex items-center"><svg class="w-5 h-5 text-blue-500 mr-3" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>Webhooks for new leads</li>
+                    </ul>
+                    <button onclick="openModal()" class="btn-ghost px-6 py-3 rounded-full text-white font-semibold border-blue-500/50 hover:bg-blue-500/10">Contact Us</button>
+                </div>
+                <div class="order-2 md:order-2">
+                    <div class="glass-card rounded-xl overflow-hidden border border-blue-500/20 shadow-2xl w-full max-w-[100vw]">
+                        <div class="bg-slate-900 border-b border-white/10 px-4 py-3 flex items-center space-x-2">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                            <div class="ml-4 text-xs text-gray-500 font-mono">POST /api/v1/scan</div>
+                        </div>
+                        <div class="p-6 bg-slate-900/90 font-mono text-xs md:text-sm overflow-x-auto whitespace-pre-wrap">
+<span class="text-purple-400">curl</span> -X POST https://api.geopoint.ai/scan \
+  -H <span class="text-green-400">"Authorization: Bearer YOUR_KEY"</span> \
+  -d <span class="text-blue-300">'{
+    "address": "123 Oak St, Austin, TX",
+    "filters": ["roof_damage", "overgrown_lawn"]
+  }'</span>
+
+<span class="text-gray-500">// Response</span>
+{
+  <span class="text-blue-300">"status"</span>: <span class="text-green-400">"success"</span>,
+  <span class="text-blue-300">"distress_score"</span>: <span class="text-yellow-400">94</span>,
+  <span class="text-blue-300">"factors"</span>: [<span class="text-green-400">"severe_roof"</span>, <span class="text-green-400">"high_grass"</span>],
+  <span class="text-blue-300">"estimated_equity"</span>: <span class="text-yellow-400">145000</span>
+}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="get-started" class="py-24 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-purple-900/40 to-blue-900/40 z-0"></div>
+        <div class="absolute inset-0 flex items-center justify-center -z-10 opacity-30">
+             <div class="w-[800px] h-[800px] bg-gradient-to-b from-purple-600 to-blue-600 rounded-full blur-[150px]"></div>
+        </div>
+        
+        <div class="max-w-4xl mx-auto px-4 text-center relative z-10">
+            <div class="flex justify-center mb-8">
+                <img src="https://lh3.googleusercontent.com/tutpKzlNt1pbPkzNFZRE3zQfHXoVTSEWZSawSomj2gkfs5ESOyI-RbuZMdZiqTAh31VBjfc_BXy_0EnxXAi0crq1axvwTIYFGy4=s0" alt="As Seen In" class="h-20 opacity-80 mix-blend-screen">
+            </div>
+
+            <h2 class="text-4xl md:text-6xl font-extrabold mb-6 tracking-tight">Ready to Automate Your<br>Drive for Dollars?</h2>
+            <p class="text-xl text-blue-100 mb-10">Join thousands of investors finding better deals, faster.</p>
+            
+            <button onclick="openModal()" class="btn-primary text-white text-xl px-12 py-5 rounded-full font-bold shadow-2xl hover:scale-105 transform transition-transform">
+                Run Your First AI Scan
+            </button>
+            <p class="mt-4 text-sm text-gray-400">No credit card required for demo.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 border-t border-white/5 pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+                <div class="text-center md:text-left flex flex-col items-center justify-center md:justify-start">
+                    <div class="w-full flex justify-center">
+                        <img src="images/Geopoint-Logo-(update) 1.svg" alt="GeoPoint Leads" class="h-8 mb-4 opacity-100 logo-white-filter logo-xl">
+                    </div>
+                    <p class="text-gray-500 text-sm mt-4 text-center w-full">The future of distressed property finding. Built for investors, by investors.</p>
+                </div>
+                <div class="text-center md:text-left">
+                    <h4 class="text-white font-semibold mb-4">Product</h4>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-purple-400">Features</a></li>
+                        <li><a href="#" class="hover:text-purple-400">Pricing</a></li>
+                        <li><a href="#" class="hover:text-purple-400">API</a></li>
+                    </ul>
+                </div>
+                <div class="text-center md:text-left">
+                    <h4 class="text-white font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2 text-sm text-gray-500">
+                        <li><a href="#" class="hover:text-purple-400">Privacy Policy</a></li>
+                        <li><a href="#" class="hover:text-purple-400">Terms of Service</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-white/5 pt-8 text-center text-sm text-gray-600">
+                &copy; 2025 GeoPoint AI. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Lead Form Modal -->
+    <div id="leadModal" class="modal-backdrop fixed inset-0 flex items-center justify-center p-4 bg-slate-900/80 backdrop-blur-sm">
+        <div class="modal-content w-full max-w-2xl bg-[#0f172a] border border-white/10 rounded-2xl shadow-2xl p-8 relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-white z-50 bg-slate-800 rounded-full p-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <h2 class="text-2xl font-bold text-white mb-6 pr-10">Book Your Demo</h2>
+            <form class="space-y-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Full Name</label>
+                        <input type="text" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="John Doe">
+                    </div>
+                    <div>
+                         <label class="block text-sm font-medium text-gray-400 mb-2">Phone</label>
+                         <input type="tel" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="(555) 000-0000">
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-2">Email</label>
+                        <input type="email" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="john@example.com">
+                    </div>
+                    <div>
+                         <label class="block text-sm font-medium text-gray-400 mb-2">Target Market</label>
+                         <input type="text" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-4 py-3 text-white focus:ring-2 focus:ring-blue-500 focus:outline-none" placeholder="City, County or Zip">
+                    </div>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-400 mb-3">Primary Property Type</label>
+                    <div class="grid grid-cols-2 md:grid-cols-5 gap-3">
+                        <label class="property-type-option cursor-pointer">
+                            <input type="radio" name="property_type" class="hidden">
+                            <div class="border border-slate-700 rounded-xl p-3 text-center hover:bg-slate-800 transition-colors">
+                                <svg class="w-6 h-6 mx-auto mb-2 text-gray-400 hidden md:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                                <span class="text-xs font-medium text-gray-300">Single Family</span>
+                            </div>
+                        </label>
+                        <label class="property-type-option cursor-pointer">
+                            <input type="radio" name="property_type" class="hidden">
+                            <div class="border border-slate-700 rounded-xl p-3 text-center hover:bg-slate-800 transition-colors">
+                                <svg class="w-6 h-6 mx-auto mb-2 text-gray-400 hidden md:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+                                <span class="text-xs font-medium text-gray-300">Condo</span>
+                            </div>
+                        </label>
+                        <label class="property-type-option cursor-pointer">
+                            <input type="radio" name="property_type" class="hidden">
+                            <div class="border border-slate-700 rounded-xl p-3 text-center hover:bg-slate-800 transition-colors">
+                                <svg class="w-6 h-6 mx-auto mb-2 text-gray-400 hidden md:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"/></svg>
+                                <span class="text-xs font-medium text-gray-300">2-4 Plex</span>
+                            </div>
+                        </label>
+                        <label class="property-type-option cursor-pointer">
+                            <input type="radio" name="property_type" class="hidden">
+                            <div class="border border-slate-700 rounded-xl p-3 text-center hover:bg-slate-800 transition-colors">
+                                <svg class="w-6 h-6 mx-auto mb-2 text-gray-400 hidden md:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
+                                <span class="text-xs font-medium text-gray-300">1 Story</span>
+                            </div>
+                        </label>
+                        <label class="property-type-option cursor-pointer">
+                            <input type="radio" name="property_type" class="hidden">
+                            <div class="border border-slate-700 rounded-xl p-3 text-center hover:bg-slate-800 transition-colors">
+                                <svg class="w-6 h-6 mx-auto mb-2 text-gray-400 hidden md:block" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4h13M3 8h9m-9 4h6m4 0l4-4m0 0l4 4m-4-4v12"/></svg>
+                                <span class="text-xs font-medium text-gray-300">2 Story</span>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+                <button type="button" onclick="closeModal()" class="w-full btn-primary text-white font-bold py-4 rounded-xl mt-4 hover:scale-[1.02] transition-transform">Submit Application</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Video Modal -->
+    <div id="videoModal" class="modal-backdrop fixed inset-0 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md" style="z-index: 200;">
+        <div class="modal-content w-full max-w-4xl bg-black rounded-2xl shadow-2xl overflow-hidden relative aspect-video">
+            <button onclick="closeVideoModal()" class="absolute top-4 right-4 text-white hover:text-red-500 z-50 bg-black/50 rounded-full p-2">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+            <iframe id="youtubeIframe" class="w-full h-full" src="" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- Gemini Chat Widget -->
+    <div class="chat-widget-btn" onclick="toggleChat()">
+        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+    </div>
+
+    <div class="chat-window" id="chatWindow">
+        <div class="bg-slate-800 p-4 border-b border-white/10 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
+                <span class="font-bold text-white">GeoPoint AI Assistant</span>
+            </div>
+            <button onclick="toggleChat()" class="text-gray-400 hover:text-white">&times;</button>
+        </div>
+        <div class="chat-messages" id="chatMessages">
+            <div class="chat-message bot">
+                Hi there! 👋 I'm here to help you find distressed properties. How can I assist you today?
+                <div class="mt-2 flex flex-wrap gap-2">
+                    <button onclick="sendPreset('What is GeoPoint?')" class="text-xs bg-slate-700 hover:bg-slate-600 px-2 py-1 rounded-full text-blue-200">What is GeoPoint?</button>
+                    <button onclick="sendPreset('Pricing?')" class="text-xs bg-slate-700 hover:bg-slate-600 px-2 py-1 rounded-full text-blue-200">Pricing?</button>
+                </div>
+            </div>
+        </div>
+        <div class="chat-input-area">
+            <input type="text" id="chatInput" class="chat-input" placeholder="Type a message..." onkeypress="handleChatKey(event)">
+            <button onclick="sendMessage()" class="text-blue-400 hover:text-white">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+            </button>
+        </div>
+    </div>
 </body>
 </html>
