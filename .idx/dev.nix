@@ -6,17 +6,16 @@
   # Use https://search.nixos.org/packages to find packages
   packages = [
     pkgs.nodejs_20
-    pkgs.npm
     pkgs.python3
-    pkgs.nodePackages.tailwindcss # Added to make tailwindcss CLI available
+    pkgs.nodePackages.tailwindcss
   ];
   # Sets environment variables in the workspace
   env = {};
   idx = {
     # Search for the extensions you want on https://open-vsx.org/ and use "publisher.id"
     extensions = [
-      # "vscodevim.vim"
       "google.gemini-cli-vscode-ide-companion"
+      "bradlc.vscode-tailwindcss"
     ];
     # Enable previews and customize configuration
     previews = {
@@ -27,11 +26,6 @@
           manager = "web";
         };
       };
-    };
-    # Workspace specific VSCode settings
-    workspace = {
-      # For example, to enable inline folding
-      "editor.folding" = true;
     };
   };
 }

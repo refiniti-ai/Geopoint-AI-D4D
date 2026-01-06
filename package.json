@@ -4,12 +4,17 @@
   "description": "A simple HTML/JS/CSS starter template",
   "main": "main.js",
   "scripts": {
+    "start": "node server.js",
     "build": "tailwindcss -i ./style.css -o ./dist/style.css",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "@google/generative-ai": "^0.15.0"
+  },
   "devDependencies": {
     "tailwindcss": "^4.1.17"
   }

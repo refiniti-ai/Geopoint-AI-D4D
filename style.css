@@ -1,3 +1,244 @@
+/* stylelint-disable at-rule-no-unknown */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* --- GLOBAL STYLES --- */
+        body {
+            background-color: #0f172a;
+            color: #f8fafc;
+            overflow-x: hidden;
+        }
+
+        /* --- ANIMATIONS (Standard CSS) --- */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+        }
+        @keyframes blob {
+            0% { transform: translate(0px, 0px) scale(1); }
+            33% { transform: translate(30px, -50px) scale(1.1); }
+            66% { transform: translate(-20px, 20px) scale(0.9); }
+            100% { transform: translate(0px, 0px) scale(1); }
+        }
+        @keyframes spin-slow {
+            from { transform: translate(-50%, -50%) rotate(0deg); }
+            to { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+        @keyframes spin-reverse-slow {
+            from { transform: translate(-50%, -50%) rotate(360deg); }
+            to { transform: translate(-50%, -50%) rotate(0deg); }
+        }
+        @keyframes scan {
+            0% { top: 0%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+        @keyframes radar {
+            0% { width: 0%; height: 0%; opacity: 0.8; }
+            100% { width: 100%; height: 100%; opacity: 0; }
+        }
+        @keyframes progress {
+            0% { width: 0%; }
+            100% { width: 100%; }
+        }
+        @keyframes scanHorizontal {
+            0% { left: 0%; opacity: 0; }
+            10% { opacity: 1; }
+            90% { opacity: 1; }
+            100% { left: 100%; opacity: 0; }
+        }
+        @keyframes markerReveal {
+            0%, 25% { fill: #475569; transform: scale(1); }
+            30% { transform: scale(1.2); }
+            35%, 100% { fill: var(--marker-color); transform: scale(1); }
+        }
+        @keyframes pulse-slow {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+
+        /* Animation Classes */
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-blob { animation: blob 10s infinite; }
+        .animate-spin-slow { animation: spin-slow 15s linear infinite; }
+        .animate-spin-reverse-slow { animation: spin-reverse-slow 20s linear infinite; }
+        .animate-scan { animation: scan 3s linear infinite; }
+        .animate-radar { animation: radar 2s linear infinite; }
+        .animate-scan-horizontal { animation: scanHorizontal 4s linear infinite; }
+        .animate-marker-reveal { animation: markerReveal 4s linear infinite; }
+        .animate-pulse-slow { animation: pulse-slow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+
+        /* --- COMPONENTS --- */
+        
+        /* Glassmorphism */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .glass-card {
+            background: linear-gradient(145deg, rgba(30, 41, 59, 0.7), rgba(15, 23, 42, 0.9));
+            border: 1px solid rgba(139, 92, 246, 0.15);
+            box-shadow: 0 0 15px rgba(139, 92, 246, 0.1);
+            transition: all 0.3s ease;
+        }
+        .glass-card:hover {
+            transform: translateY(-5px) scale(1.01);
+            border-color: rgba(217, 70, 239, 0.4);
+            box-shadow: 0 0 25px rgba(217, 70, 239, 0.2);
+        }
+
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(90deg, #d946ef 0%, #8b5cf6 100%);
+            box-shadow: 0 0 20px rgba(217, 70, 239, 0.4);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            box-shadow: 0 0 30px rgba(217, 70, 239, 0.6);
+            transform: translateY(-2px);
+        }
+        .btn-ghost {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        .btn-ghost:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        /* Text Gradients */
+        .text-gradient-primary {
+            background: linear-gradient(90deg, #d946ef 0%, #60a5fa 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Logos */
+        .logo-white-filter { filter: brightness(0) invert(1); }
+        .logo-lg { transform: scale(1.3); }
+        .logo-xl { transform: scale(2.2); }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0f172a; }
+        ::-webkit-scrollbar-thumb { background: #334155; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+        /* Holographic Globe Visuals */
+        .holo-globe {
+            background: radial-gradient(circle at center, rgba(59, 130, 246, 0.2) 0%, rgba(15, 23, 42, 0) 70%);
+            border-radius: 50%;
+            box-shadow: 0 0 50px rgba(59, 130, 246, 0.3) inset;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            position: relative;
+        }
+        .holo-ring {
+            border: 1px solid rgba(59, 130, 246, 0.2);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%; left: 50%;
+            /* transform is handled by animation keyframes */
+        }
+        .scan-line {
+            position: absolute;
+            left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #3b82f6, transparent);
+            box-shadow: 0 0 10px #3b82f6;
+            /* animation added via class */
+        }
+        .radar-scan {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            width: 100%; height: 100%;
+            border-radius: 50%;
+            border: 2px solid rgba(59, 130, 246, 0.5);
+            opacity: 0;
+            /* animation added via class */
+        }
+
+        /* Dashboard specific */
+        .progress-bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: inherit;
+            width: 0%;
+            animation: progress 2s ease-in-out infinite alternate;
+        }
+        .data-card-glow {
+            box-shadow: 0 0 15px rgba(59, 130, 246, 0.3), inset 0 0 15px rgba(59, 130, 246, 0.1);
+        }
+
+        /* Modals */
+        .modal-backdrop {
+            opacity: 0; visibility: hidden; transition: all 0.3s ease-in-out; z-index: 100;
+        }
+        .modal-backdrop.active { opacity: 1; visibility: visible; }
+        .modal-content {
+            transform: scale(0.95); opacity: 0; transition: all 0.3s ease-in-out;
+        }
+        .modal-backdrop.active .modal-content { transform: scale(1); opacity: 1; }
+        .property-type-option input:checked + div {
+            background-color: rgba(59, 130, 246, 0.2);
+            border-color: #3b82f6; color: white;
+        }
+
+      /* --- Add/Replace these styles for the Plan Selection --- */
+.plan-card .selected {
+    background-color: rgba(139, 92, 246, 0.1) !important;
+    border-color: #8b5cf6 !important;
+}
+.plan-card .selected .plan-icon {
+    color: #c4b5fd !important;
+}
+
+        /* Chat Widget */
+        .chat-widget-btn {
+            position: fixed; bottom: 20px; right: 20px; z-index: 90;
+            width: 60px; height: 60px; border-radius: 50%;
+            background: linear-gradient(135deg, #d946ef, #3b82f6);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.5);
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; transition: transform 0.3s ease;
+        }
+        .chat-widget-btn:hover { transform: scale(1.1); }
+        .chat-window {
+            position: fixed; bottom: 90px; right: 20px; z-index: 90;
+            width: 350px; height: 450px; background: #0f172a;
+            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.5); display: flex;
+            flex-direction: column; overflow: hidden; transform-origin: bottom right;
+            transform: scale(0); transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+        .chat-window.open { transform: scale(1); }
+        .chat-messages { flex: 1; padding: 15px; overflow-y: auto; }
+        .chat-message {
+            margin-bottom: 10px; max-width: 80%; padding: 10px;
+            border-radius: 12px; font-size: 14px; line-height: 1.4;
+        }
+        .chat-message.bot {
+            background: rgba(255,255,255,0.1); color: white;
+            align-self: flex-start; border-bottom-left-radius: 2px;
+        }
+        .chat-message.user {
+            background: #3b82f6; color: white;
+            align-self: flex-end; margin-left: auto; border-bottom-right-radius: 2px;
+        }
+        .chat-input-area {
+            padding: 10px; border-top: 1px solid rgba(255,255,255,0.1);
+            background: rgba(0,0,0,0.2); display: flex; gap: 10px;
+        }
+        .chat-input {
+            flex: 1; background: rgba(255,255,255,0.05);
+            border: none; border-radius: 20px; padding: 8px 15px;
+            color: white; font-size: 14px;
+        }
+        .chat-input:focus { outline: none; background: rgba(255,255,255,0.1); }

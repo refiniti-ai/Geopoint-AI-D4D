@@ -4,7 +4,12 @@
     "ignore": [
       "firebase.json",
       "**/.*",
-      "**/node_modules/**"
+      "**/node_modules/**",
+      "tailwind.config.js",
+      "postcss.config.js",
+      "package.json",
+      "package-lock.json",
+      "blueprint.md"
     ]
   }
 }
