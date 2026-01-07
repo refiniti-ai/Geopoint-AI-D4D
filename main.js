@@ -161,8 +161,13 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(response => {
                 if (response.ok) {
-                    const redirectUrl = `schedule-demo.html?full_name=${encodeURIComponent(data.full_name || '')}&email=${encodeURIComponent(data.email || '')}&phone=${encodeURIComponent(data.phone || '')}`;
-                    window.location.href = redirectUrl;
+                    // Store form data in sessionStorage to avoid URL params (FB Pixel violation)
+                    sessionStorage.setItem('geopoint_lead', JSON.stringify({
+                        full_name: data.full_name || '',
+                        email: data.email || '',
+                        phone: data.phone || ''
+                    }));
+                    window.location.href = 'schedule-demo.html';
                 } else {
                     response.text().then(text => {
                         alert('Submission Failed: ' + text);
