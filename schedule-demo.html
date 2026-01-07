@@ -121,46 +121,31 @@
                 <iframe id="ghl-booking-iframe" style="width: 100%; height: 700px; border:none; overflow: hidden;" scrolling="no"></iframe>
                 <script src="https://link.msgsndr.com/js/form_embed.js" type="text/javascript"></script>
                 <script>
-                    // Set GHL iframe src - with lead data from sessionStorage if available
+                    // Read URL params and pass to GHL iframe for autofill
                     document.addEventListener('DOMContentLoaded', function() {
                         const baseUrl = 'https://api.leadconnectorhq.com/widget/booking/7coXKYaGoTvZi9WpW9DY';
                         const iframe = document.getElementById('ghl-booking-iframe');
+                        const urlParams = new URLSearchParams(window.location.search);
                         
-                        if (!iframe) {
-                            console.error('GHL iframe not found');
-                            return;
-                        }
+                        const name = urlParams.get('name') || '';
+                        const email = urlParams.get('email') || '';
+                        const phone = urlParams.get('phone') || '';
                         
-                        const leadData = sessionStorage.getItem('geopoint_lead');
-                        
-                        if (leadData) {
-                            try {
-                                const data = JSON.parse(leadData);
-                                const params = new URLSearchParams();
-                                
-                                // Add all common GHL parameter variations for maximum compatibility
-                                if (data.full_name) {
-                                    const nameParts = data.full_name.trim().split(/\s+/);
-                                    const firstName = nameParts[0] || '';
-                                    const lastName = nameParts.slice(1).join(' ') || '';
-                                    // Try all common GHL parameter formats
-                                    params.append('name', data.full_name);
-                                    params.append('firstName', firstName);
-                                    params.append('lastName', lastName);
-                                    params.append('first_name', firstName);
-                                    params.append('last_name', lastName);
-                                }
-                                if (data.email) params.append('email', data.email);
-                                if (data.phone) params.append('phone', data.phone);
-                                
-                                iframe.src = baseUrl + (params.toString() ? '?' + params.toString() : '');
-                                console.log('GHL iframe URL:', iframe.src);
-                                // Clear the data after use
-                                sessionStorage.removeItem('geopoint_lead');
-                            } catch (e) {
-                                console.error('Error parsing lead data:', e);
-                                iframe.src = baseUrl;
+                        if (name || email || phone) {
+                            const ghlParams = new URLSearchParams();
+                            if (name) {
+                                const nameParts = name.trim().split(/\s+/);
+                                const firstName = nameParts[0] || '';
+                                const lastName = nameParts.slice(1).join(' ') || '';
+                                ghlParams.append('name', name);
+                                ghlParams.append('firstName', firstName);
+                                ghlParams.append('lastName', lastName);
+                                ghlParams.append('first_name', firstName);
+                                ghlParams.append('last_name', lastName);
                             }
+                            if (email) ghlParams.append('email', email);
+                            if (phone) ghlParams.append('phone', phone);
+                            iframe.src = baseUrl + '?' + ghlParams.toString();
                         } else {
                             iframe.src = baseUrl;
                         }

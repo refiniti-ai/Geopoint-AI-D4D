@@ -161,13 +161,12 @@ document.addEventListener('DOMContentLoaded', function() {
             })
             .then(response => {
                 if (response.ok) {
-                    // Store form data in sessionStorage to avoid URL params (FB Pixel violation)
-                    sessionStorage.setItem('geopoint_lead', JSON.stringify({
-                        full_name: data.full_name || '',
-                        email: data.email || '',
-                        phone: data.phone || ''
-                    }));
-                    window.location.href = 'schedule-demo.html';
+                    // Pass form data via URL params for GHL autofill
+                    const params = new URLSearchParams();
+                    if (data.full_name) params.append('name', data.full_name);
+                    if (data.email) params.append('email', data.email);
+                    if (data.phone) params.append('phone', data.phone);
+                    window.location.href = 'schedule-demo.html?' + params.toString();
                 } else {
                     response.text().then(text => {
                         alert('Submission Failed: ' + text);
