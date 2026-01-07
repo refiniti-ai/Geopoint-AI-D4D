@@ -1,5 +1,5 @@
 {
-  "projects": {},
-  "targets": {},
-  "etags": {}
+  "projects": {
+    "default": "geopoint-ai-d4d-51789705-ad1b9"
+  }
 }

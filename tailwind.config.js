@@ -1,8 +1,24 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: ["./**/*.{html,js}"],
+  content: [
+    "./index.html",
+    "./schedule-demo.html",
+    "./404.html",
+    "./main.js"
+  ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+      },
+      colors: {
+        brand: {
+          dark: '#0f172a',
+          purple: '#d946ef',
+          blue: '#3b82f6',
+          accent: '#8b5cf6',
+        }
+      },
       animation: {
         float: 'float 6s ease-in-out infinite',
         blob: 'blob 10s infinite',

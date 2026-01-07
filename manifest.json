@@ -1,0 +1,22 @@
+{
+  "name": "GeoPoint AI",
+  "short_name": "GeoPoint",
+  "description": "Drive for Dollars on Autopilot with AI-powered property analysis.",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#8b5cf6",
+  "icons": [
+    {
+      "src": "images/Geopoint Favicon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/Geopoint Favicon.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
+

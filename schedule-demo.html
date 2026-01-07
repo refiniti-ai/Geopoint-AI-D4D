@@ -137,9 +137,18 @@
                             try {
                                 const data = JSON.parse(leadData);
                                 const params = new URLSearchParams();
-                                if (data.full_name) params.append('name', data.full_name);
+                                
+                                // Split full name into first and last name for GHL
+                                if (data.full_name) {
+                                    const nameParts = data.full_name.trim().split(/\s+/);
+                                    const firstName = nameParts[0] || '';
+                                    const lastName = nameParts.slice(1).join(' ') || '';
+                                    if (firstName) params.append('first_name', firstName);
+                                    if (lastName) params.append('last_name', lastName);
+                                }
                                 if (data.email) params.append('email', data.email);
                                 if (data.phone) params.append('phone', data.phone);
+                                
                                 iframe.src = baseUrl + (params.toString() ? '?' + params.toString() : '');
                                 // Clear the data after use
                                 sessionStorage.removeItem('geopoint_lead');

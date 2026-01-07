@@ -9,7 +9,12 @@
       "postcss.config.js",
       "package.json",
       "package-lock.json",
-      "blueprint.md"
+      "blueprint.md",
+      "server.js",
+      "style.css",
+      "GEMINI.md",
+      "README.md",
+      "firebase-debug.log"
     ]
   }
 }
