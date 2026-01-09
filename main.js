@@ -1,13 +1,13 @@
 document.addEventListener('DOMContentLoaded', function() {
     const WEBHOOK_URL = 'https://services.leadconnectorhq.com/hooks/dNrHTUpNRITaAbadgmjo/webhook-trigger/c0df1bca-acc5-42c9-a833-ada9265eef28';
 
-    // --- FOOLPROOF, JAVASCRIPT-ONLY PLAN SELECTION LOGIC ---
+    // --- Plan Selection Styling ---
     function updatePlanStyles() {
         const allPlanLabels = document.querySelectorAll('.plan-label');
         if (allPlanLabels.length === 0) return;
 
         allPlanLabels.forEach(label => {
-            const radio = label.querySelector('input[name=\"plan\"]');
+            const radio = label.querySelector('input[name="plan"]');
             const card = label.querySelector('.plan-card');
             const icon = label.querySelector('.plan-icon');
 
@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', function() {
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
             if (document.getElementById('leadForm')) {
-                updatePlanStyles(); 
+                updatePlanStyles();
             }
         }
     }
