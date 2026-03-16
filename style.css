@@ -98,6 +98,7 @@
             background: linear-gradient(90deg, #d946ef 0%, #8b5cf6 100%);
             box-shadow: 0 0 20px rgba(217, 70, 239, 0.4);
             transition: all 0.3s ease;
+            padding: 1rem 2rem; /* 16px 32px - persists even if Tailwind classes are overridden */
         }
         .btn-primary:hover {
             box-shadow: 0 0 30px rgba(217, 70, 239, 0.6);
@@ -199,46 +200,3 @@
 .plan-card .selected .plan-icon {
     color: #c4b5fd !important;
 }
-
-        /* Chat Widget */
-        .chat-widget-btn {
-            position: fixed; bottom: 20px; right: 20px; z-index: 90;
-            width: 60px; height: 60px; border-radius: 50%;
-            background: linear-gradient(135deg, #d946ef, #3b82f6);
-            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.5);
-            display: flex; align-items: center; justify-content: center;
-            cursor: pointer; transition: transform 0.3s ease;
-        }
-        .chat-widget-btn:hover { transform: scale(1.1); }
-        .chat-window {
-            position: fixed; bottom: 90px; right: 20px; z-index: 90;
-            width: 350px; height: 450px; background: #0f172a;
-            border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.5); display: flex;
-            flex-direction: column; overflow: hidden; transform-origin: bottom right;
-            transform: scale(0); transition: transform 0.3s cubic-bezier(0.19, 1, 0.22, 1);
-        }
-        .chat-window.open { transform: scale(1); }
-        .chat-messages { flex: 1; padding: 15px; overflow-y: auto; }
-        .chat-message {
-            margin-bottom: 10px; max-width: 80%; padding: 10px;
-            border-radius: 12px; font-size: 14px; line-height: 1.4;
-        }
-        .chat-message.bot {
-            background: rgba(255,255,255,0.1); color: white;
-            align-self: flex-start; border-bottom-left-radius: 2px;
-        }
-        .chat-message.user {
-            background: #3b82f6; color: white;
-            align-self: flex-end; margin-left: auto; border-bottom-right-radius: 2px;
-        }
-        .chat-input-area {
-            padding: 10px; border-top: 1px solid rgba(255,255,255,0.1);
-            background: rgba(0,0,0,0.2); display: flex; gap: 10px;
-        }
-        .chat-input {
-            flex: 1; background: rgba(255,255,255,0.05);
-            border: none; border-radius: 20px; padding: 8px 15px;
-            color: white; font-size: 14px;
-        }
-        .chat-input:focus { outline: none; background: rgba(255,255,255,0.1); }

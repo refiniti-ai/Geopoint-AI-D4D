@@ -38,9 +38,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (modal) {
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
-            if (document.getElementById('leadForm')) {
-                updatePlanStyles();
-            }
+            updatePlanStyles();
         }
     }
 
@@ -58,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const iframe = document.getElementById('youtubeIframe');
         const modal = document.getElementById('videoModal');
         if (iframe && modal) {
-            iframe.src = "https://www.youtube.com/embed/CrKjii-v3XA?autoplay=1";
+            iframe.src = "https://www.youtube.com/embed/gdJNJdAMOlk?autoplay=1";
             modal.classList.add('active');
             document.body.style.overflow = 'hidden';
         }
@@ -127,62 +125,71 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // --- Event Listener for Plan Selection ---
-    const leadForm = document.getElementById('leadForm');
-    if (leadForm) {
+    const leadForms = document.querySelectorAll('form[data-lead-form="lead"]');
+    if (leadForms.length > 0) {
         updatePlanStyles();
-        leadForm.addEventListener('change', (event) => {
-            if (event.target.name === 'plan') {
-                updatePlanStyles();
-            }
+        leadForms.forEach((form) => {
+            form.addEventListener('change', (event) => {
+                if (event.target.name === 'plan') {
+                    updatePlanStyles();
+                }
+            });
         });
     }
 
     // --- Form Submission Logic ---
-    if (leadForm) {
-        leadForm.addEventListener('submit', (event) => {
-            event.preventDefault();
-            const submitButton = leadForm.querySelector('button[type=\"submit\"]');
-            if (submitButton) {
-                submitButton.textContent = 'Submitting...';
-                submitButton.disabled = true;
-            }
+    if (leadForms.length > 0) {
+        leadForms.forEach((form) => {
+            form.addEventListener('submit', (event) => {
+                event.preventDefault();
+                const submitButton = form.querySelector('button[type=\"submit\"]');
+                if (submitButton) {
+                    submitButton.textContent = 'Submitting...';
+                    submitButton.disabled = true;
+                }
 
-            const formData = new FormData(leadForm);
-            const data = Object.fromEntries(formData.entries());
-            const smsConsent = leadForm.querySelector('#sms_consent');
-            if (smsConsent) {
-                data.sms_consent = smsConsent.checked ? "true" : "false";
-            }
-            
-            fetch(WEBHOOK_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(data)
-            })
-            .then(response => {
-                if (response.ok) {
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData.entries());
+                
+                // Construct first/last name from full_name for GHL if needed
+                if (data.full_name) {
+                    const nameParts = data.full_name.trim().split(/\s+/);
+                    data.first_name = nameParts[0] || '';
+                    data.last_name = nameParts.slice(1).join(' ') || '';
+                    // Ensure full_name is explicitly set for the webhook
+                    data.full_name = data.full_name.trim();
+                }
+
+                const smsConsent = form.querySelector('input[name="sms_consent"]');
+                if (smsConsent) {
+                    data.sms_consent = smsConsent.checked ? "true" : "false";
+                }
+                
+                fetch(WEBHOOK_URL, {
+                    method: 'POST',
+                    mode: 'no-cors',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(data)
+                })
+                .then(() => {
+                    // With no-cors, we can't check response.ok, so we assume success
                     // Pass form data via URL params for GHL autofill
                     const params = new URLSearchParams();
-                    if (data.full_name) params.append('name', data.full_name);
+                    if (data.first_name) params.append('first_name', data.first_name);
+                    if (data.last_name) params.append('last_name', data.last_name);
+                    if (data.full_name) {
+                        params.append('name', data.full_name);
+                        params.append('full_name', data.full_name);
+                    }
                     if (data.email) params.append('email', data.email);
                     if (data.phone) params.append('phone', data.phone);
                     window.location.href = 'schedule-demo.html?' + params.toString();
-                } else {
-                    response.text().then(text => {
-                        alert('Submission Failed: ' + text);
-                        if (submitButton) {
-                            submitButton.textContent = 'Submit Application';
-                            submitButton.disabled = false;
-                        }
-                    });
-                }
-            })
-            .catch(error => {
-                alert('A network error occurred.');
-                if (submitButton) {
-                    submitButton.textContent = 'Submit Application';
-                    submitButton.disabled = false;
-                }
+                })
+                .catch(error => {
+                    console.error('Submission error:', error);
+                    // Fallback redirect even on error to ensure user flow
+                    window.location.href = 'schedule-demo.html';
+                });
             });
         });
     }
@@ -195,6 +202,10 @@ document.addEventListener('DOMContentLoaded', function() {
     window.closeVideoModal = closeVideoModal;
     window.openLegalModal = openLegalModal;
     window.closeLegalModal = closeLegalModal;
+    window.toggleChat = toggleChat;
+    window.sendMessage = sendMessage;
+    window.sendPreset = sendPreset;
+    window.handleChatKey = handleChatKey;
 
     // --- Event Listeners for closing modals ---
     ['leadModal', 'videoModal', 'legalModal'].forEach(modalId => {
